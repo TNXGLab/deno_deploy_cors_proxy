@@ -46,35 +46,10 @@ async function handleRequest(request: Request) {
 
   const readme = await Deno.readTextFile("./README.md");
   const body = render(readme);
-  const html = `<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CORS Proxy</title>
-        <style>
-          body {
-            margin: 0;
-            background-color: var(--color-canvas-default);
-            color: var(--color-fg-default);
-          }
-          main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-          }
-          ${CSS}
-        </style>
-      </head>
-      <body data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
-        <main class="markdown-body">
-          ${body}
-        </main>
-      </body>
-    </html>`;
+  const html = `{"code":"500","msg":"An unknown error occurred on the server","Service":"Proxy-Download"}`;
   return new Response(html, {
     headers: {
-      "content-type": "text/html;charset=utf-8",
+      "content-type": "application/json;charset=utf-8",
     },
   });
 }
