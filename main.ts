@@ -51,6 +51,7 @@ async function handleRequest(request: Request) {
         }
         // 发起代理请求
         const response = await fetch(url, request);
+        console.log(request);
         // 添加CORS头部信息到响应
         const headers = addCorsIfNeeded(response);
         // 构建新的响应对象，包括原始响应的状态、状态文本和头部信息
